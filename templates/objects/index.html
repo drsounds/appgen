@@ -17,23 +17,33 @@
     </head>
     <body>
         <div class="container">
-            <bungalow-header style="width: 100%" icon="<%=model.icon%>" type="<%=model.model%>">
-                <name>__entity__</name>
-                <description></description>
-            </bungalow-header>
-            <hr>
-            <table>
+            <h1><%=model.model%>s</h1>
+            <div class="toolbar">
+                <a class="btn btn-primary" id="addbtn" href="javascript:void(event)" onclick="show_add(event)"><i class="fa fa-plus"></i> Add <%=model.model%></a>
+            </div>
+            <table class="table" width="100%">
                 <thead>
                     <tr>
                         <% _.each(model.fields, function (field) { %>
-                        <td><%=field%></td>
+                        <td><%=field.name%></td>
                         <% });%>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tbody>
                     </tbody>
                 </thead>
             </table>
-            
+            <div id="form" style="display: none">
+                <form onsubmit="add(event); return false;">
+                    
+                    <% _.each(model.fields, function (field) { %>
+                    <label for="<%=field.id%>"><%=field.name%></label><br>
+                    <input type="<%field.type%>" id="field_<%=field.id%>"><br>
+                    <% });%>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>            
         </div>
         <script src="scripts/main.js"></script>
     </body>
