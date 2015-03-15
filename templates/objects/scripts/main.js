@@ -43,7 +43,7 @@ function add(event) {
         <% });%>
     };
     console.log(<%=model.model%>);
-    dpd.<%=model.model%>s.post(<%=model.model%>).then(function (err, done) {
+    dpd.<%=model.model%>s.post(<%=model.model%>, function (err, done) {
         dpd.<%=model.model%>s.get(function (<%=model.model%>s) {
             fill_table(<%=model.model%>s);
         });

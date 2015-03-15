@@ -13,6 +13,7 @@
         <script src="//localhost:2403/dpd.js"></script>
        
         <link rel="import" href="../../components/view-header.html">
+        <link rel="import" href="../../components/item.html">
 
     </head>
     <body>
@@ -22,6 +23,18 @@
                 <description></description>
             </bungalow-header>
             <hr>
+
+            <% if ('relations' in model) { %>
+            <% for (var i = 0; i < model.relations.length; i++) { 
+                var relatedModel = model.relations[i];
+
+            %>
+            <h3 class="divider"><%=relatedModel.name%>s</h3>
+            <div class="collection" id="collection_<%=relatedModel.model%>">
+
+            </div>
+            <% } %>
+            <% } %>
             
         </div>
         <script src="scripts/main.js"></script>
